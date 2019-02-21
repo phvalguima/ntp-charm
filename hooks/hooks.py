@@ -86,12 +86,14 @@ def build_conf_file():
     
     with open(NTP_CONF_FILE,"w") as f:
         cfg=[]
+        res=[]
         pcount=0
         for i in iburst_srvs:
             cfg.append("server {} iburst".format(i))
         for i in iburst_pools:
             cfg.append("pool {} iburst".format(i))
-        f.write("\n\n\n".join(fe_part.render(servers_pools_config=cfg)))
+        res.append(fe_part.render(servers_pools_config=cfg))
+        f.write("".join(res))
         f.close()
         
     service_restart("ntp")
