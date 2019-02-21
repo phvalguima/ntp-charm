@@ -82,7 +82,7 @@ def build_conf_file():
 
     file_loader = FileSystemLoader("templates")
     env = Environment(loader=file_loader)
-    fe_part = env.get_template("ntp.conf.tmpl")
+    fe_part = env.get_template("ntp.conf.templ")
     
     with open(NTP_CONF_FILE,"w") as f:
         cfg=[]
