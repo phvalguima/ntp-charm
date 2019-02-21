@@ -88,11 +88,11 @@ def build_conf_file():
         cfg=[]
         res=[]
         pcount=0
-        if len(iburst_srvs) > 0:
-            for i in iburst_srvs:
+        for i in iburst_srvs:
+            if len(i) > 0:
                 cfg.append("server {} iburst".format(i))
-        if len(iburst_pools) > 0:
-            for i in iburst_pools:
+        for i in iburst_pools:
+            if len(i) > 0:
                 cfg.append("pool {} iburst".format(i))
         res.append(fe_part.render(servers_pools_config="".join(cfg)))
         f.write("".join(res))
