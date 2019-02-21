@@ -1,21 +1,15 @@
-name: simple-proxy-charm
-summary: A charm for a simple proxy based on HAProxy and CRM tools
-maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
+name: NTPq Charm
+summary: A charm that runs NTPq instead of Chrony
 description: |
- A charm for a simple proxy based on HAProxy and CRM tools
+  A charm that runs NTPq instead of Chrony
 tags:
-  - proxy
-  - loadbalancing
-  - misc
+  - ntp
 series:
   - xenial
   - bionic
   - cosmic
-extra-bindings:
-  frontend:
-  backend:
-  admin-network:
+subordinate: true
 requires:
-  ha:
-    interface: hacluster
+  container:
+    interface: juju-info
     scope: container

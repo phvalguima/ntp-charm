@@ -91,8 +91,7 @@ def build_conf_file():
             cfg.append("server {} iburst".format(i))
         for i in iburst_pools:
             cfg.append("pool {} iburst".format(i))
-        
-        f.write("\n\n\n".join(cfg))
+        f.write("\n\n\n".join(fe_part.render(servers_pools_config=cfg)))
         f.close()
         
     service_restart("ntp")
