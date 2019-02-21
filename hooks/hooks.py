@@ -74,15 +74,15 @@ def install():
 
 
 def build_conf_file():
-    if len(config.get("iburst_servers"))==0 and len(config.get("iburst_pools"))==0:
-        block_service("No pools or NTP servers defined")
+    #if len(config_get("iburst_servers"))==0 and len(config_get("iburst_pools"))==0:
+    #    block_service("No pools or NTP servers defined")
         
-    iburst_srvs=config.get("iburst_servers").split(",")
-    iburst_pools=config.get("iburst_pools").split(",")
+    iburst_srvs=config_get("iburst_servers").split(",")
+    iburst_pools=config_get("iburst_pools").split(",")
 
     file_loader = FileSystemLoader("templates")
     env = Environment(loader=file_loader)
-    fe_part = env.get_template("ntp.tmpl")
+    fe_part = env.get_template("ntp.conf.tmpl")
     
     with open(NTP_CONF_FILE,"w") as f:
         cfg=[]
